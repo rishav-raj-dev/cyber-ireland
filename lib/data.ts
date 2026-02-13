@@ -4,31 +4,55 @@ export const cyberIrelandData = {
   totalRevenue: "€2.1bn",
   totalGva: "€1.1bn",
   gvaPerEmployee: "€150k",
-  
+
   regions: {
-    Dublin: { offices: 397, firms: 100, coordinates: { lat: 53.3498, lng: -6.2603 } },
-    Cork: { offices: 129, firms: 37, coordinates: { lat: 51.8985, lng: -8.4756 } },
-    Galway: { offices: 39, firms: 8, coordinates: { lat: 53.2707, lng: -9.0568 } },
-    Limerick: { offices: 30, firms: 3, coordinates: { lat: 52.6638, lng: -8.6267 } }
+    Dublin: {
+      offices: 397,
+      purePlay: 100,     // Dedicated offices
+      hybrid: 297,       // Diversified offices
+      coordinates: { lat: 53.3498, lng: -6.2603 },
+      cluster: "Dublin"
+    },
+    Cork: {
+      offices: 129,
+      purePlay: 37,
+      hybrid: 92,
+      coordinates: { lat: 51.8985, lng: -8.4756 },
+      cluster: "South-West"
+    },
+    Galway: {
+      offices: 39,
+      purePlay: 8,
+      hybrid: 31,
+      coordinates: { lat: 53.2707, lng: -9.0568 },
+      cluster: "South-West"
+    },
+    Limerick: {
+      offices: 30,
+      purePlay: 3,
+      hybrid: 27,
+      coordinates: { lat: 52.6638, lng: -8.6267 },
+      cluster: "South-West"
+    }
   },
-  
+
   firmTypes: {
     dedicated: { count: 160, percentage: 33, employees: 3368 },
     diversified: { count: 329, percentage: 67, employees: 3983 }
   },
-  
+
   firmSizes: {
     large: { count: 217, percentage: 44 },
     medium: { count: 58, percentage: 12 },
     small: { count: 77, percentage: 16 },
     micro: { count: 137, percentage: 28 }
   },
-  
+
   growthProjection2030: {
     jobs: 17333,
     gva: "€2.5bn"
   },
-  
+
   taxonomy: {
     MSSP_Advisory: { firms: 174, percentage: 36, label: "MSSP & Advisory Services" },
     Applications_Networks_Cloud: { firms: 151, percentage: 31, label: "Applications, Networks & Cloud" },

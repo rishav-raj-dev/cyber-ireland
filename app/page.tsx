@@ -81,7 +81,7 @@ export default function Home() {
     const regionData = Object.entries(cyberIrelandData.regions).map(([name, data]) => ({
         name,
         offices: data.offices,
-        firms: data.firms
+        firms: data.purePlay + data.hybrid,
     }));
 
     const currentYearData = cyberIrelandData.yearlyGrowth.find(d => d.year === selectedYear);
@@ -101,6 +101,7 @@ export default function Home() {
 
                 <Metric handleMetricClick={handleMetricClick} />
 
+                <RegionMap showPdfModal={showPdfModal} />
 
                 {/* Main Content Grid */}
                 <div className={`grid grid-cols-1 gap-8 mb-12 ${
@@ -242,7 +243,7 @@ export default function Home() {
                     </motion.div>
                 </div>
 
-                <RegionMap showPdfModal={showPdfModal} />
+                
 
                 {/* Taxonomy & Firm Sizes */}
                 <div className={`grid grid-cols-1 gap-8 ${
