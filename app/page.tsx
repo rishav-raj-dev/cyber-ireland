@@ -8,7 +8,16 @@ import { cyberIrelandData } from '../lib/data';
 import Header from '@/components/Header/Header';
 import Metric from '@/components/Metric/Metric';
 import PDFViewer from '@/components/Metric/PdfViewer';
-import RegionMap from '@/components/Map/RegionMap';
+import dynamic from 'next/dynamic'
+
+// Dynamically import the map component with SSR disabled
+const RegionMap = dynamic(
+  () => import('@/components/Map/RegionMap'),
+  { 
+    ssr: false,
+    loading: () => <div>Loading map...</div>
+  }
+)
 
 export default function Home() {
     const [selectedMetric, setSelectedMetric] = useState<string | null>(null);

@@ -12,7 +12,7 @@ export default function Header({setShowPdfModal}: {setShowPdfModal: (show: boole
             >
                 <div className="flex items-center justify-between mb-4">
                 <h1 className="text-4xl md:text-6xl font-display font-bold">
-                    <span className=" text-blue-900 animated-gradient bg-clip-text text-transparent">
+                    <span className=" text-blue-800 animated-gradient bg-clip-text text-transparent">
                     CYBER IRELAND
                     </span>
                 </h1>
