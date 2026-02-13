@@ -2,14 +2,20 @@ import { motion } from "framer-motion";
 import { Building2, DollarSign, ExternalLink, TrendingUp, Users } from "lucide-react";
 import { cyberIrelandData } from "@/lib/data";
 import Card from "./Card";
+import { useContext, useState } from "react";
+import { createContext } from "vm";
+import { AppContext } from "@/app/page";
 
-export default function Metric({handleMetricClick}: {handleMetricClick: (label: string, page: number) => void}) {
+
+
+export default function Metric({ handleMetricClick }: { handleMetricClick: (label: string, page: number) => void }) {
     const metricData = [
         { icon: Users, label: 'Total Jobs', value: cyberIrelandData.totalJobs.toLocaleString(), color: 'teal', page: 12 },
         { icon: Building2, label: 'Total Firms', value: cyberIrelandData.totalFirms, color: 'cyan', page: 23 },
         { icon: DollarSign, label: 'Total Revenue', value: cyberIrelandData.totalRevenue, color: 'purple', page: 36 },
         { icon: TrendingUp, label: 'GVA per Employee', value: cyberIrelandData.gvaPerEmployee, color: 'cyan', page: 36 }
     ];
+    const { showPdfModal, setShowPdfModal } = useContext(AppContext);
     return (
         <>
             <motion.div

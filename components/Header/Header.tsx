@@ -1,8 +1,11 @@
+import { AppContext } from "@/app/page";
 import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
+import { useContext } from "react";
 
 
-export default function Header({setShowPdfModal}: {setShowPdfModal: (show: boolean) => void}) {
+export default function Header() {
+    const { setShowPdfModal } = useContext(AppContext);
     return (
         <>
             <motion.header 
