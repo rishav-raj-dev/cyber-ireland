@@ -6,6 +6,7 @@ import { BarChart, Bar, LineChart, Line, PieChart, Pie, XAxis, YAxis, CartesianG
 import { TrendingUp, Building2, Users, DollarSign, FileText, MapPin, ChevronRight, ExternalLink } from 'lucide-react';
 import { cyberIrelandData } from '../lib/data';
 import Header from '@/components/Header/Header';
+import Metric from '@/components/Metric/Metric';
 
 
 export default function Home() {
@@ -46,76 +47,11 @@ export default function Home() {
 
     return (
         <div className="min-h-screen p-4 md:p-8">
-            {/* Header */}
-            {/* <motion.header 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-12"
-      >
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-4xl md:text-6xl font-display font-bold">
-            <span className=" text-blue-300 animated-gradient bg-clip-text text-transparent">
-              CYBER IRELAND
-            </span>
-          </h1>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="glass px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/10 transition"
-            onClick={() => setShowPdfModal(true)}
-          >
-            <FileText className="w-4 h-4" />
-            <span className="hidden md:inline">View Source Report</span>
-          </motion.button>
-        </div>
-        <p className="text-cyan-300 text-lg font-mono">
-          State of the Cyber Security Sector 2022 • Digital Twin Dashboard
-        </p>
-            </motion.header> */}
 
             <Header setShowPdfModal={setShowPdfModal} />
 
-            {/* Key Metrics - Click to Source */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-            >
-                {[
-                    { icon: Users, label: 'Total Jobs', value: cyberIrelandData.totalJobs.toLocaleString(), color: 'teal', page: 12 },
-                    { icon: Building2, label: 'Total Firms', value: cyberIrelandData.totalFirms, color: 'cyan', page: 23 },
-                    { icon: DollarSign, label: 'Total Revenue', value: cyberIrelandData.totalRevenue, color: 'purple', page: 36 },
-                    { icon: TrendingUp, label: 'GVA per Employee', value: cyberIrelandData.gvaPerEmployee, color: 'cyan', page: 36 }
-                ].map((metric, idx) => (
-                    <motion.div
-                        key={metric.label}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 * idx }}
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        onClick={() => handleMetricClick(metric.label, metric.page)}
-                        className={`glass rounded-2xl p-6 cursor-pointer transition-all hover:border-${metric.color}-500 group`}
-                    >
-                        <div className="flex items-start justify-between mb-4">
-                            <div className={`p-3 rounded-xl bg-${metric.color}-500/20`}>
-                                <metric.icon className={`w-6 h-6 text-${metric.color}-400`} />
-                            </div>
-                            <motion.div
-                                className="opacity-0 group-hover:opacity-100 transition-opacity"
-                                whileHover={{ scale: 1.1 }}
-                            >
-                                <ExternalLink className="w-4 h-4 text-gray-400" />
-                            </motion.div>
-                        </div>
-                        <h3 className="text-gray-400 text-sm mb-2 font-mono">{metric.label}</h3>
-                        <p className="text-3xl font-bold font-display">{metric.value}</p>
-                        <p className="text-xs text-cyan-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                            Click to view source (Page {metric.page})
-                        </p>
-                    </motion.div>
-                ))}
-            </motion.div>
+            <Metric handleMetricClick={handleMetricClick} />
+
 
             {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
