@@ -71,3 +71,13 @@ body {
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
 }
+
+/* Prevent text selection while dragging */
+.dragging {
+  user-select: none;
+  cursor: col-resize !important;
+}
+
+.dragging * {
+  cursor: col-resize !important;
+}
