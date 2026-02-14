@@ -7,7 +7,6 @@ import { TrendingUp, Building2, Users, DollarSign, FileText, MapPin, ChevronRigh
 import { cyberIrelandData } from '../lib/data';
 import Header from '@/components/Header/Header';
 import Metric from '@/components/Metric/Metric';
-import PDFViewer from '@/components/Metric/PdfViewer';
 import dynamic from 'next/dynamic'
 import App from 'next/app';
 import SliderGraph from '@/components/Stats/SliderGraph';
@@ -18,16 +17,25 @@ const RegionMap = dynamic(
   () => import('@/components/Map/RegionMap'),
   { 
     ssr: false,
-    loading: () => <div>Loading map...</div>
+    // loading: () => <div>Loading map...</div>
+  }
+)
+
+// Dynamically import PDF viewer with SSR disabled
+const PDFViewer = dynamic(
+  () => import('@/components/Metric/PdfViewer'),
+  { 
+    ssr: false,
+    loading: () => <div>Loading PDF...</div>
   }
 )
 
 export default function Home() {
     const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
-    const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [selectedYear, setSelectedYear] = useState(2022);
     const [showPdfModal, setShowPdfModal] = useState(false);
     const [pdfPage, setPdfPage] = useState<number | null>(null);
+    const [pdfPageBox, setPdfPageBox] = useState<{x: number, y: number, width: number, height: number} | null>(null);
     const [sidebarWidth, setSidebarWidth] = useState(50); // percentage
     const [isDragging, setIsDragging] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -63,9 +71,10 @@ export default function Home() {
     };
 
     // Handle click-to-source
-    const handleMetricClick = (metricName: string, pageNum: number) => {
+    const handleMetricClick = (metricName: string, pageNum: number, box: {x: number, y: number, width: number, height: number}) => {
         setSelectedMetric(metricName);
         setPdfPage(pageNum);
+        setPdfPageBox(box);
         setShowPdfModal(true);
     };
 
@@ -125,29 +134,13 @@ export default function Home() {
                 </motion.footer>
             </div>
 
-            {/* Resizable Divider - Only on desktop
-            {showPdfModal && !isMobile && (
-                <div
-                    className="w-1 bg-gradient-to-b from-teal-500/50 to-purple-500/50 cursor-col-resize hover:w-2 transition-all relative group"
-                    onMouseDown={() => setIsDragging(true)}
-                >
-                    <div className="absolute inset-y-0 -left-1 -right-1 group-hover:bg-teal-500/20 transition-colors" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-16 bg-gray-800 rounded-full border-2 border-teal-500/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                        <div className="flex gap-0.5">
-                            <div className="w-0.5 h-6 bg-teal-400 rounded" />
-                            <div className="w-0.5 h-6 bg-teal-400 rounded" />
-                        </div>
-                    </div>
-                </div>
-            )} */}
-
             {/* PDF Viewer Panel - Desktop Split View */}
             {showPdfModal && !isMobile && (
                 <div 
                     className="h-screen overflow-y-auto p-4 md:p-8"
                     style={{ width: `${100 - sidebarWidth}%` }}
                 >
-                    <PDFViewer selectedMetric={selectedMetric} pdfPage={pdfPage} handleClosePdf={handleClosePdf} />
+                    <PDFViewer selectedMetric={selectedMetric} pdfPage={pdfPage} pdfPageBox={pdfPageBox} handleClosePdf={handleClosePdf} />
                 </div>
             )}
 
@@ -167,7 +160,7 @@ export default function Home() {
                         onClick={(e) => e.stopPropagation()}
                         className="w-full h-full"
                     >
-                        <PDFViewer selectedMetric={selectedMetric} pdfPage={pdfPage} handleClosePdf={handleClosePdf} />
+                        <PDFViewer selectedMetric={selectedMetric} pdfPageBox={pdfPageBox} pdfPage={pdfPage} handleClosePdf={handleClosePdf} />
                     </motion.div>
                 </motion.div>
             )}

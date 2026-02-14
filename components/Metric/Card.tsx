@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 
 export default function Card(
     { metric, idx, handleMetricClick }:
-    {metric: any, idx: number, handleMetricClick: (label: string, page: number) => void}) {
+    {metric: any, idx: number, handleMetricClick: (label: string, page: number, box: any) => void}) {
     return (
         <>
             <motion.div
@@ -12,7 +12,7 @@ export default function Card(
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * idx }}
                 whileHover={{ scale: 1.02, y: -4 }}
-                onClick={() => handleMetricClick(metric.label, metric.page)}
+                onClick={() => handleMetricClick(metric.label, metric.page, metric.box)}
                 className={`glass rounded-2xl p-6 cursor-pointer transition-all hover:border-${metric.color}-500 group`}
             >
                 <div className="flex items-start justify-between mb-4">

@@ -8,12 +8,16 @@ import { AppContext } from "@/lib/AppContext";
 
 
 
-export default function Metric({ handleMetricClick }: { handleMetricClick: (label: string, page: number) => void }) {
+export default function Metric({ handleMetricClick }: { handleMetricClick: (label: string, page: number, box: any) => void }) {
     const metricData = [
-        { icon: Users, label: 'Total Jobs', value: cyberIrelandData.totalJobs.toLocaleString(), color: 'teal', page: 12 },
-        { icon: Building2, label: 'Total Firms', value: cyberIrelandData.totalFirms, color: 'cyan', page: 23 },
-        { icon: DollarSign, label: 'Total Revenue', value: cyberIrelandData.totalRevenue, color: 'purple', page: 36 },
-        { icon: TrendingUp, label: 'GVA per Employee', value: cyberIrelandData.gvaPerEmployee, color: 'cyan', page: 36 }
+        {
+            icon: Users, label: 'Total Jobs', value: cyberIrelandData.totalJobs.toLocaleString(), color: 'teal', page: 17,
+            box: { x: 640, y: 550, width: 500, height: 60 }
+        },
+        {
+            icon: Building2, label: 'Total Firms', value: cyberIrelandData.totalFirms, color: 'cyan', page: 4,
+            box: { x: 680, y: 500, width: 200, height: 80 }
+        }
     ];
     const { showPdfModal, setShowPdfModal } = useContext(AppContext);
     return (
@@ -22,10 +26,10 @@ export default function Metric({ handleMetricClick }: { handleMetricClick: (labe
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12"
             >
                 {metricData.map((metric, idx) => (
-                    <Card metric={metric} idx={idx} handleMetricClick={handleMetricClick} />
+                    <Card key={metric.label} metric={metric} idx={idx} handleMetricClick={handleMetricClick} />
                 ))}
             </motion.div>
         </>

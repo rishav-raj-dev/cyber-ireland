@@ -152,15 +152,17 @@ export default function RegionMap({ showPdfModal }: { showPdfModal: boolean }) {
                                     icon={createCustomIcon(region)}
                                     eventHandlers={{
                                         click: () => setSelectedRegion(region.name),
+                                        mouseover: () => setSelectedRegion(region.name),
                                     }}
                                 >
                                 </Marker>
                             ))}
                         </MapContainer>
                     ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-cyan-900/20 to-purple-900/20 rounded-xl flex items-center justify-center">
-                            <div className="text-gray-400 font-mono">Loading interactive map...</div>
-                        </div>
+                        // <div className="w-full h-full bg-gradient-to-br from-cyan-900/20 to-purple-900/20 rounded-xl flex items-center justify-center">
+                        //     <div className="text-gray-400 font-mono">Loading interactive map...</div>
+                        // </div>
+                        null
                     )}
                 </div>
 
