@@ -127,7 +127,7 @@ export default function RegionMap({ showPdfModal }: { showPdfModal: boolean }) {
         <motion.div className="glass rounded-2xl p-6 mb-12">
             <h2 className="text-2xl font-display font-bold mb-6">Regional Distribution</h2>
 
-            <div className={`grid grid-cols-1 gap-8 ${showPdfModal ? 'xl:grid-cols-2' : 'lg:grid-cols-2'}`}>
+            <div className={`grid grid-cols-1 gap-8 ${showPdfModal ? 'xl:grid-cols-1' : 'lg:grid-cols-2'}`}>
                 {/* Real Interactive Map */}
                 <div className="relative h-96 rounded-xl overflow-hidden">
                     {isClient ? (
