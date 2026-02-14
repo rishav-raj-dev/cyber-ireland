@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, createContext } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import { TrendingUp, Building2, Users, DollarSign, FileText, MapPin, ChevronRight, ExternalLink, X } from 'lucide-react';
@@ -11,6 +11,7 @@ import PDFViewer from '@/components/Metric/PdfViewer';
 import dynamic from 'next/dynamic'
 import App from 'next/app';
 import SliderGraph from '@/components/Stats/SliderGraph';
+import { AppContext } from '@/lib/AppContext';
 
 // Dynamically import the map component with SSR disabled
 const RegionMap = dynamic(
@@ -20,12 +21,6 @@ const RegionMap = dynamic(
     loading: () => <div>Loading map...</div>
   }
 )
-
-export const AppContext = createContext({
-    showPdfModal: false,
-    setShowPdfModal: (value: boolean) => {},
-    COLORS: ['#00D9C0', '#00B8D9', '#7C3AED', '#F59E0B', '#EF4444']
-});
 
 export default function Home() {
     const [selectedMetric, setSelectedMetric] = useState<string | null>(null);

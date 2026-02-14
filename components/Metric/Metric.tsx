@@ -4,7 +4,7 @@ import { cyberIrelandData } from "@/lib/data";
 import Card from "./Card";
 import { useContext, useState } from "react";
 import { createContext } from "vm";
-import { AppContext } from "@/app/page";
+import { AppContext } from "@/lib/AppContext";
 
 
 

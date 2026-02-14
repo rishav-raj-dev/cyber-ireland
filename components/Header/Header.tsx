@@ -1,4 +1,4 @@
-import { AppContext } from "@/app/page";
+import { AppContext } from "@/lib/AppContext";
 import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
 import { useContext } from "react";

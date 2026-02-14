@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { cyberIrelandData } from "@/lib/data";
 import { useContext } from "react";
-import { AppContext } from "@/app/page";
+import { AppContext } from "@/lib/AppContext";
 export default function FirmDistributionGraph() {
     const { showPdfModal } = useContext(AppContext);    
     const firmSizeData = Object.entries(cyberIrelandData.firmSizes).map(([key, value]) => ({
