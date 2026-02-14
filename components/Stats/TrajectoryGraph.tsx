@@ -25,26 +25,7 @@ export default function TrajectoryGraph() {
 
                 {/* Year Slider */}
                 <div className="mb-8">
-                    <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm text-gray-400 font-mono">Select Year</span>
-                        <span className="text-2xl font-bold text-teal-400">{selectedYear}</span>
-                    </div>
-                    <input
-                        type="range"
-                        min="2022"
-                        max="2030"
-                        value={selectedYear}
-                        onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-teal-500"
-                        style={{
-                            background: `linear-gradient(to right, #00D9C0 0%, #00D9C0 ${((selectedYear - 2022) / 8) * 100}%, #374151 ${((selectedYear - 2022) / 8) * 100}%, #374151 100%)`
-                        }}
-                    />
-                    <div className="flex justify-between text-xs text-gray-500 mt-2">
-                        <span>2022</span>
-                        <span>2025</span>
-                        <span>2030</span>
-                    </div>
+                    
 
                     {/* Current Year Stats */}
                     <AnimatePresence mode="wait">
@@ -90,8 +71,29 @@ export default function TrajectoryGraph() {
                 <div className="mt-4 p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
                     <p className="text-sm text-yellow-200">
                         <strong>Gap Analysis:</strong> From {selectedYear === 2022 ? 'baseline' : selectedYear} to 2030, sector needs to add{' '}
-                        <strong>{(17333 - (currentYearData?.employment || 7351)).toLocaleString()} jobs</strong> to meet projections.
+                        <strong>{(17333 - (currentYearData?.employment || 7351)).toLocaleString()} jobs</strong> to meet projections. <br />
+                        <strong> Annual growth rate required:</strong> ~10% CAGR. 
                     </p>
+                </div>
+                <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-gray-400 font-mono">Select Year</span>
+                    <span className="text-2xl font-bold text-teal-400">{selectedYear}</span>
+                </div>
+                <input
+                    type="range"
+                    min="2022"
+                    max="2030"
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(parseInt(e.target.value))}
+                    className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-teal-500"
+                    style={{
+                        background: `linear-gradient(to right, #00D9C0 0%, #00D9C0 ${((selectedYear - 2022) / 8) * 100}%, #374151 ${((selectedYear - 2022) / 8) * 100}%, #374151 100%)`
+                    }}
+                />
+                <div className="flex justify-between text-xs text-gray-500 mt-2">
+                    <span>2022</span>
+                    <span className="mr-80">2025</span>
+                    <span>2030</span>
                 </div>
             </motion.div>
         </div>
