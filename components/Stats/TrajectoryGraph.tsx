@@ -92,7 +92,7 @@ export default function TrajectoryGraph() {
                 />
                 <div className="flex justify-between text-xs text-gray-500 mt-2">
                     <span>2022</span>
-                    <span className="mr-80">2025</span>
+                    <span>2025</span>
                     <span>2030</span>
                 </div>
             </motion.div>
