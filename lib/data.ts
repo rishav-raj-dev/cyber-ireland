@@ -63,8 +63,8 @@ export const cyberIrelandData = {
   },
 
   yearlyGrowth: [
-    { year: 2021, gva: 1075.5, employment: 7351 },
-    { year: 2022, gva: 1183.1, employment: 8086 },
+    // { year: 2021, gva: 1075.5, employment: 7351 },
+    { year: 2022, gva: 1075.5, employment:  7351},
     { year: 2023, gva: 1301.4, employment: 8895 },
     { year: 2024, gva: 1431.5, employment: 9784 },
     { year: 2025, gva: 1574.7, employment: 10763 },
