@@ -5,7 +5,6 @@ import { cyberIrelandData } from "@/lib/data";
 import { useContext, useState } from "react";
 import { AppContext } from "@/lib/AppContext";
 import TrajectoryGraph from "./TrajectoryGraph";
-import FirmTypeGraph from "./FirmTypeGraph";
 import TaxonomyGraph from "./TaxonomyGraph";
 import FirmDistributionGraph from "./FirmDistributionGraph";
 
